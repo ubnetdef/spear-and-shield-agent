@@ -26,17 +26,17 @@ def configure_ip() -> bytes:
     Returns the stdout of the system command response
     '''
 
+    ipAddress = get_ip_address()
+
     platformString = platform.system()
-    
-    if platformString == "Linux":
-        ipAddress = get_ip_address()
+    if platformString == "Linux": # TODO: Needs testing
         INTERFACE = "ens160"
         ip = IPRoute()
         index = ip.link_lookup(ifname=INTERFACE)[0]
         ip.addr('add', index, address=ipAddress, mask=24)
         ip.close()
-    elif platformString == "Windows":
-        cmd = "whoami" # TODO: Figure out how to set IPs in Windows
+    elif platformString == "Windows": # TODO: Needs testing
+        cmd = f"netsh interface ip set address lan static {ipAddress} 255.255.255.0"
         completed = subprocess.run(["powershell", "-Command", cmd], capture_output=True)
         return completed.stdout
     else:
