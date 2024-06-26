@@ -6,8 +6,10 @@ authors = ["Blake <80996688+BlakeTnr@users.noreply.github.com>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = "^3.12"
+python = "^3.10"
 gql = "^3.5.0"
+aiohttp = "^3.9.5"
+pyroute2 = "^0.7.12"
 
 
 [build-system]
