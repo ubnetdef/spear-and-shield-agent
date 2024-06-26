@@ -32,7 +32,7 @@ def configure_ip() -> bytes:
     if platformString == "Linux": # TODO: Needs testing
         INTERFACE = "ens160"
         ip = IPRoute()
-        index = ip.link_lookup(ifname=INTERFACE)[0]
+        index = ip.link_lookup(ifname=INTERFACE)[0]  # FIXME: Add error handling here if assumption about interface name is wrong
         ip.addr('add', index, address=ipAddress, mask=24)
         ip.close()
     elif platformString == "Windows": # TODO: Needs testing
