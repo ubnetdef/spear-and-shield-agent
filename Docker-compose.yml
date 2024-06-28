@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  spearandshieldagent:
+    image: spearandshieldagent
+    build:
+      context: .
+      dockerfile: ./Dockerfile
